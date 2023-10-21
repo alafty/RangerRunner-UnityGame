@@ -1,7 +1,7 @@
 # RangerRunner-UnityGame
 This endless-runner game is a project for a university Unity course and is developed for educational purposes only
 
-===========================
+===========================<br />
 **Controls**
 - Use the A & S or left and rigth arrow keys to move left and right
 - Keep collecting colored orbs in order to be able to switch to colored modes
@@ -11,7 +11,7 @@ This endless-runner game is a project for a university Unity course and is devel
 - Hitting obstacles in white mode leads to the game being over
 - Hitting obstacles in colored modes switches you back to white mode
 
-============================
+============================<br />
 **Cheats**
 - Cheats can be activated from the pause menu in game.
 - The cheat code "god" activates god mode.
