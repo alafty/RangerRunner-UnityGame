@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameStates : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class GameStates : MonoBehaviour
     public static bool isShieldActive = false;
 
     public static bool isGamePaused = false;
+    public static bool isGameOver = false;
 
     //cheat codes variables
     public static bool isInvincible = false;
@@ -49,8 +51,10 @@ public class GameStates : MonoBehaviour
 
     private void Start()
     {
+        isGameOver = false;
         soundEffects = FindObjectOfType<SoundSystem>();
-        if(soundEffects != null)
+        Debug.Log(MusicToggle.isMute);
+        if(MusicToggle.isMute == false)
         {
             soundEffects.PlayMusic(Levels.game);
         }
@@ -58,7 +62,7 @@ public class GameStates : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.J)) 
+        if (Input.GetKeyUp(KeyCode.J) && !isGamePaused) 
         {
             if(redOrbs >= switchingThreshold)
             {
@@ -66,13 +70,13 @@ public class GameStates : MonoBehaviour
             }
             else
             {
-                if (soundEffects != null)
+                if (MusicToggle.isMute == false)
                 {
                     soundEffects.PlaySFX(Events.insufficientOrbs);
                 }
             }
         }
-        if (Input.GetKeyUp(KeyCode.K))
+        if (Input.GetKeyUp(KeyCode.K) && !isGamePaused)
         {
             if (greenOrbs >= switchingThreshold)
             {
@@ -80,13 +84,13 @@ public class GameStates : MonoBehaviour
             }
             else
             {
-                if (soundEffects != null)
+                if (MusicToggle.isMute == false)
                 {
                     soundEffects.PlaySFX(Events.insufficientOrbs);
                 }
             }
         }
-        if (Input.GetKeyUp(KeyCode.L))
+        if (Input.GetKeyUp(KeyCode.L) && !isGamePaused)
         {
             if (blueOrbs >= switchingThreshold)
             {
@@ -94,13 +98,13 @@ public class GameStates : MonoBehaviour
             }
             else
             {
-                if (soundEffects != null)
+                if (MusicToggle.isMute == false)
                 {
                     soundEffects.PlaySFX(Events.insufficientOrbs);
                 }
             }
         }
-        if(Input.GetKeyUp(KeyCode.Space) && activeOrb != white)
+        if(Input.GetKeyUp(KeyCode.Space) && activeOrb != white && !isGamePaused)
         {
             ActivatePower();
         }
@@ -119,7 +123,7 @@ public class GameStates : MonoBehaviour
             blueOrbs++;
             UpdateScore();
         }
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && !isGameOver)
         {
             ForwardForce.movingSpeed = isGamePaused ? ForwardForce.SetMovingSpeed() :
                 0;
@@ -127,8 +131,9 @@ public class GameStates : MonoBehaviour
         }
     }
 
-    void HandlePauseMenu()
+    public void HandlePauseMenu()
     {
+        ForwardForce.movingSpeed = isGamePaused ? ForwardForce.SetMovingSpeed() : 0;
         isGamePaused = !isGamePaused;
         pauseMenu.SetActive(isGamePaused);
         if (isGamePaused)
@@ -137,9 +142,23 @@ public class GameStates : MonoBehaviour
             FindObjectOfType<CheatsScript>().feedback.text = "";
 
         }
-        if (soundEffects != null)
+        if (MusicToggle.isMute == false)
         {
             soundEffects.PlayMusic(isGamePaused ? Levels.title : Levels.game);
+        }
+
+    }
+
+    public void GoToMainMenu()
+    {
+
+        SceneManager.LoadScene(0);
+        ForwardForce.movingSpeed = ForwardForce.SetMovingSpeed();
+        isGamePaused = false;
+        pauseMenu.SetActive(false);
+        if (MusicToggle.isMute == false)
+        {
+            soundEffects.PlayMusic(Levels.title);
         }
 
     }
@@ -154,7 +173,7 @@ public class GameStates : MonoBehaviour
             currentMultiplier = baseMultiplier;
 
             activeOrb = color;
-            if (soundEffects != null)
+            if (MusicToggle.isMute == false)
             {
                 soundEffects.PlaySFX(Events.changeForm);
             }
@@ -200,7 +219,7 @@ public class GameStates : MonoBehaviour
                     }
                     else
                     {
-                        if (soundEffects != null)
+                        if (MusicToggle.isMute == false)
                         {
                             soundEffects.PlaySFX(Events.insufficientOrbs);
                         }
@@ -218,7 +237,7 @@ public class GameStates : MonoBehaviour
                     }
                     else
                     {
-                        if (soundEffects != null)
+                        if (MusicToggle.isMute == false)
                         {
                             soundEffects.PlaySFX(Events.insufficientOrbs);
                         }
@@ -228,7 +247,7 @@ public class GameStates : MonoBehaviour
                 break;
             default: break;
         }
-        if (soundEffects != null && isPowerActivated)
+        if (MusicToggle.isMute == false && isPowerActivated)
         {
             soundEffects.PlaySFX(Events.activatePower);
         }
@@ -296,7 +315,8 @@ public class GameStates : MonoBehaviour
         //stop the camera from moving after player destruction
         Destroy(player.GetComponent<ForwardForce>());
         gameOverMenu.SetActive(true);
-        if(soundEffects != null)
+        isGameOver = true;
+        if(MusicToggle.isMute == false)
         {
             soundEffects.PlayMusic(Levels.title);
         }

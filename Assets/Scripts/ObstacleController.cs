@@ -54,7 +54,7 @@ public class ObstacleController : MonoBehaviour
 
             }
         }
-        if (soundEffects != null)
+        if (MusicToggle.isMute == false)
         {
             soundEffects.PlaySFX(Events.hitObstacle);
         }

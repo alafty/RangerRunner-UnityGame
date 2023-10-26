@@ -12,17 +12,17 @@ public class ForwardForce : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, movingSpeed * Time.deltaTime);
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, movingSpeed * Time.fixedDeltaTime);
 
     }
 
     public static int SetMovingSpeed()
     {
-        int speed = SceneSwitch.difficulty == Difficulty.easy ? 1200 :
-            SceneSwitch.difficulty == Difficulty.medium ? 3000 :
-            SceneSwitch.difficulty == Difficulty.hard ? 4500 : movingSpeed = 0;
+        int speed = SceneSwitch.difficulty == Difficulty.easy ? 900 :
+            SceneSwitch.difficulty == Difficulty.medium ? 1300 :
+            SceneSwitch.difficulty == Difficulty.hard ? 1800 : movingSpeed = 0;
         return speed;
     }
 }

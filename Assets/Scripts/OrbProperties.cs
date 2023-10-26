@@ -143,7 +143,7 @@ public class OrbProperties : MonoBehaviour, ICollectable
         game.GetComponent<GameStates>().redOrbs = redOrbs;
         game.GetComponent<GameStates>().greenOrbs = greenOrbs;
         game.GetComponent<GameStates>().blueOrbs = blueOrbs;
-        if (soundEffects != null)
+        if (MusicToggle.isMute == false)
         {
             soundEffects.PlaySFX(Events.collectOrbs);
         }
