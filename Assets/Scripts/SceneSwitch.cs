@@ -10,11 +10,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void moveToScene(int sceneIndex)
     {
-        if(sceneIndex == 0)
-        {
-            soundSystem = GameObject.FindWithTag("SoundSystem");
-            Destroy(soundSystem);
-        }
+        
         SceneManager.LoadScene(sceneIndex);
     }
 

@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SoundSystem : MonoBehaviour
 {
-    public AudioClip[] soundEffects;
+    public AudioClip[] soundEffects ;
     public AudioClip[] backgroundMusic;
 
     private void Awake()
-    { 
+    {
         DontDestroyOnLoad(this.gameObject);
     }
 

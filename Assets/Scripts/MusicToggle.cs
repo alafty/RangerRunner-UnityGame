@@ -8,20 +8,21 @@ public class MusicToggle : MonoBehaviour
     [SerializeField] Sprite musicOn;
     [SerializeField] Sprite musicOff;
     [SerializeField] Button button;
-    public bool isToggled = false;
+    public static bool isMute = false;
     [SerializeField] GameObject soundSystem;
 
     void Start()
     {
         button.onClick.AddListener(ToggleButton);
         soundSystem = GameObject.FindWithTag("SoundSystem");
+        gameObject.GetComponent<Image>().sprite = !isMute ? musicOff : musicOn;
+
     }
 
     void ToggleButton()
     {
-        isToggled = !isToggled;
-        soundSystem.SetActive(!isToggled);
-
-        gameObject.GetComponent<Image>().sprite = isToggled ? musicOff : musicOn;
+        isMute = !isMute;
+        soundSystem.transform.GetChild(0).GetComponent<AudioSource>().enabled = !isMute;
+        gameObject.GetComponent<Image>().sprite = !isMute ? musicOff : musicOn;
     }
 }
