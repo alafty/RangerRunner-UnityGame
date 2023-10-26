@@ -1618,7 +1618,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 579d167621596b0419dc2ebf58efe561, type: 2}
+  - {fileID: 2100000, guid: b1ec81eca85a9d84ea5f62901c99f89d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1779,7 +1779,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 579d167621596b0419dc2ebf58efe561, type: 2}
+  - {fileID: 2100000, guid: b1ec81eca85a9d84ea5f62901c99f89d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3719,7 +3719,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7948145111438731765}
         m_TargetAssemblyTypeName: GameStates, Assembly-CSharp
-        m_MethodName: HandlePauseMenu
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6036,19 +6036,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1008925147797863596, guid: f80b89f56f1534a3b9ce141515a54716, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.85
+      value: 3.71
       objectReference: {fileID: 0}
     - target: {fileID: 1008925147797863596, guid: f80b89f56f1534a3b9ce141515a54716, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.5
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: 1008925147797863596, guid: f80b89f56f1534a3b9ce141515a54716, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.96430373
+      value: 0.96219426
       objectReference: {fileID: 0}
     - target: {fileID: 1008925147797863596, guid: f80b89f56f1534a3b9ce141515a54716, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2647988
+      value: 0.27236417
       objectReference: {fileID: 0}
     - target: {fileID: 1008925147797863596, guid: f80b89f56f1534a3b9ce141515a54716, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6060,7 +6060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1008925147797863596, guid: f80b89f56f1534a3b9ce141515a54716, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 30.71
+      value: 31.61
       objectReference: {fileID: 0}
     - target: {fileID: 2589399168914271872, guid: f80b89f56f1534a3b9ce141515a54716, type: 3}
       propertyPath: m_LocalPosition.x

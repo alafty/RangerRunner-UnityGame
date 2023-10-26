@@ -149,6 +149,17 @@ public class GameStates : MonoBehaviour
 
     }
 
+    public void Restart()
+    {
+        HandlePauseMenu();
+        activeOrb = Orb.white;
+        isInvincible = false;
+        isShieldActive = false;
+        isGreedy = false;
+        currentMultiplier = baseMultiplier;
+
+    }
+
     public void GoToMainMenu()
     {
 
